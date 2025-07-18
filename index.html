@@ -5,7 +5,535 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Dasturlashda 0 dan natijagacha</title>
-		<link rel="stylesheet" href="css/styles.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				background-color: white;
+				font-family: 'Montserrat', Arial, sans-serif;
+				color: #000;
+				overflow-x: hidden;
+				background-image: url(..//images/dasturlash-img.jpg);
+				background-position: center center;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+
+			.container {
+				max-width: 1180px;
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				padding-right: 20px;
+				padding-left: 20px;
+			}
+			ul,
+			ol,
+			a {
+				list-style: none;
+				text-decoration: none;
+			}
+			.site-header__wrapper {
+				max-width: 289px;
+				width: 100%;
+				padding: 15px 36px;
+				background-image: linear-gradient(180deg, #ffffff 0%, #ccc9cf 49.53%, #ffffff 100%);
+				border-bottom-left-radius: 40px;
+				border-bottom-right-radius: 40px;
+				text-align: end;
+			}
+			.site-header__wrapper-max {
+				max-width: 180px;
+				width: 100%;
+			}
+			.site-header__wrapper-title {
+				font-weight: 400;
+				font-size: 37.6px;
+				vertical-align: middle;
+				margin-bottom: 4px;
+			}
+			.site-header__wrapper-title2 {
+				font-weight: 500;
+				font-size: 24px;
+				letter-spacing: 0%;
+			}
+
+			.hero {
+				padding-top: 24px;
+				padding-bottom: 24px;
+				color: #fff;
+			}
+			.hero__container {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			.hero__info {
+				max-width: 544px;
+				width: 100%;
+			}
+			.hero__info-title {
+				font-weight: 400;
+				font-size: 52px;
+				text-transform: uppercase;
+				margin-bottom: 40px;
+			}
+			.hero__info-title span {
+				color: #f5cb72;
+			}
+			.hero__info-list {
+				margin-bottom: 64px;
+			}
+			.hero__info-list-item {
+				display: flex;
+				align-items: start;
+				gap: 18px;
+			}
+			.hero__info-list-item:not(:last-child) {
+				margin-bottom: 18px;
+			}
+			.hero__info-list-item-img {
+				width: 40px;
+				height: 40px;
+			}
+			.hero__info-list-item-text {
+				font-weight: 500;
+				font-size: 24px;
+				letter-spacing: 0%;
+			}
+			.max1 {
+				max-width: 397px;
+				width: 100%;
+			}
+			.max2 {
+				max-width: 444px;
+				width: 100%;
+			}
+			.max3 {
+				max-width: 380px;
+				width: 100%;
+			}
+			.hero__info-wrapper {
+				display: flex;
+				align-items: center;
+				gap: 16px;
+			}
+			.hero__info-img-wrapper {
+				display: none;
+			}
+			.hero__info-wrapper-btn {
+				font-weight: 600;
+				font-size: 32px;
+				text-align: center;
+				padding: 39px 6px;
+				color: #443412;
+				background: radial-gradient(50% 46.6% at 50% 50%, #f5cb72 0%, #c8a14e 100%);
+				border: none;
+				border-radius: 24px;
+			}
+			.hero__info-wrapper-right {
+				max-width: 130px;
+				width: 100%;
+			}
+			.hero__info-wrapper-right-text {
+				font-weight: 400;
+				font-size: 21px;
+				text-decoration: line-through;
+			}
+			.hero__info-wrapper-right-title {
+				font-weight: 600;
+				font-size: 44px;
+				color: #f5cb72;
+			}
+
+			/* MODALNI STILIGA TEGISHLI CSS */
+
+			.modal-backdrop {
+				position: fixed;
+				inset: 0;
+				z-index: 999;
+				display: none;
+				place-items: center;
+				background-color: rgba(0, 0, 0, 0.5);
+				padding: 20px;
+			}
+
+			.modal-backdrop--open {
+				display: grid;
+			}
+
+			.modal-content {
+				position: relative;
+				width: 100%;
+				max-width: 32rem;
+				background-color: #fff;
+				border-radius: 18px;
+				padding: 2rem;
+				box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+			}
+
+			.form-heading {
+				font-size: 2rem;
+				margin-bottom: 1.5rem;
+				text-transform: uppercase;
+			}
+
+			.form-label {
+				display: block;
+				margin-bottom: 1.5rem;
+			}
+
+			.form-label span {
+				display: block;
+				font-size: 1rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.form-label input {
+				width: 100%;
+				height: 3.5rem;
+				padding: 0 1rem;
+				font-size: 1rem;
+				border: 1px solid #bed4da;
+				border-radius: 0.75rem;
+				background-color: #f3f7f8;
+			}
+
+			.form-button {
+				width: 100%;
+				height: 4rem;
+				border-radius: 0.75rem;
+				background: #f5cb72;
+				font-size: 1.5rem;
+				font-weight: 500;
+				border: none;
+				cursor: pointer;
+				transition: background 0.3s ease;
+			}
+
+			.form-button:hover {
+				background: #e5b64e;
+			}
+
+			.form-close {
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
+				width: 2rem;
+				cursor: pointer;
+			}
+
+			.form-alert {
+				display: none;
+				background-color: #f8d7da;
+				color: #721c24;
+				padding: 1rem;
+				border-radius: 8px;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+
+			.form-alert.open {
+				display: block;
+			}
+			.form-alert {
+				display: none;
+				margin-bottom: 1rem;
+				padding: 1.5rem 0;
+				color: #721c24; /* qizil */
+				background-color: #f8d7da; /* pushti */
+				border: 1px solid #f5c6cb;
+				border-radius: 16px;
+				text-align: center;
+				font-family: 'Inter', sans-serif;
+			}
+
+			.form-alert.open {
+				display: block;
+			}
+			@keyframes shakeX {
+				from,
+				to {
+					transform: translateX(0px);
+				}
+				10%,
+				30%,
+				50%,
+				70%,
+				90% {
+					transform: translateX(10px);
+				}
+				20%,
+				40%,
+				60%,
+				80% {
+					transform: translateX(-10px);
+				}
+			}
+
+			.obuna {
+				padding-top: 140px;
+			}
+			.obuna__container {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			.obuna__info {
+				max-width: 714px;
+				width: 100%;
+			}
+			.obuna__title {
+				font-size: 52px;
+				color: #fff;
+				text-align: center;
+			}
+			.obuna__text {
+				padding-top: 21px;
+				font-size: 31px;
+				color: #fff;
+				text-align: center;
+				max-width: 500px;
+				width: 100%;
+				margin: 0 auto;
+				margin-bottom: 42px;
+			}
+			.obuna__arrow {
+				width: 218px;
+				height: 102px;
+				margin: 21px 248px 21px;
+			}
+			.obuna__btn {
+				animation: shakeX 2s ease-in-out infinite;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 20px;
+				background: #24a1de;
+				font-size: 42px;
+				padding: 20px 100px;
+				margin: 0 auto;
+				color: #ffffff;
+				font-weight: 500;
+				transition: all 0.1s ease;
+				cursor: pointer;
+				text-decoration: none;
+				border: none;
+				text-transform: uppercase;
+			}
+			.obuna__btn-img {
+				width: 42px;
+				height: 42px;
+				margin-right: 15px;
+			}
+			@media screen and (max-width: 1296px) {
+				.obuna__container {
+					flex-direction: column;
+					align-items: center;
+					text-align: center;
+				}
+
+				.obuna__title {
+					font-size: 38px;
+				}
+
+				.obuna__text {
+					font-size: 24px;
+					padding-top: 16px;
+					margin-bottom: 30px;
+				}
+
+				.obuna__arrow {
+					width: 160px;
+					height: auto;
+					margin: 20px auto;
+				}
+
+				.obuna__btn {
+					font-size: 30px;
+					padding: 16px 60px;
+				}
+				body {
+					background-color: #000;
+					background-image: none;
+				}
+				.flex {
+					display: flex;
+					flex-direction: column; /* Har doim ustun ko‘rinish */
+				}
+
+				.images {
+					width: 100%;
+					background-image: url(../images/dasturlash-media-img.png);
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
+					height: 859px;
+				}
+				.site-header__wrapper {
+					max-width: 690px;
+					padding: 14px 0;
+					border-bottom-left-radius: 35px;
+					border-bottom-right-radius: 35px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-direction: column;
+					text-align: center;
+					margin: 0 auto;
+				}
+				.site-header__wrapper-title {
+					font-size: 32px;
+					margin-bottom: 3.5px;
+				}
+				.site-header__wrapper-title2 {
+					font-size: 21px;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				.hero {
+					padding-top: 40px;
+					padding-bottom: 200px;
+					color: #fff;
+				}
+				.hero__container {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+				.hero__info {
+					max-width: 100%;
+				}
+				.hero__info-img {
+					background-image: url(../images/dasturlash-media-img.png);
+					background-position: center;
+					background-size: cover;
+					background-repeat: no-repeat;
+					height: 849px;
+					display: flex;
+					align-items: end;
+					justify-content: center;
+					padding: 32px;
+					margin-bottom: 10px;
+				}
+
+				.hero__info-title {
+					font-size: 28px;
+					text-align: center;
+					max-width: 270px;
+					width: 100%;
+					margin: 0 auto;
+				}
+				.hero__info-list {
+					margin-bottom: 64px;
+				}
+				.hero__info-list-item {
+					gap: 15px;
+				}
+				.hero__info-list-item:not(:last-child) {
+					margin-bottom: 15px;
+				}
+				.hero__info-list-item-img {
+					width: 35px;
+					height: 35px;
+				}
+				.hero__info-list-item-text {
+					font-size: 21px;
+				}
+				.max1 {
+					max-width: 588px;
+				}
+				.max2 {
+					max-width: 575px;
+				}
+				.max3 {
+					max-width: 446px;
+				}
+				.hero__info-wrapper {
+					display: none;
+				}
+				.hero__info-img-wrapper {
+					display: block;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-direction: column;
+				}
+				.hero__info-wrapper-btn {
+					font-size: 28px;
+					padding: 31px 6px;
+					border-radius: 21px;
+					width: 100%;
+					margin-bottom: 15px;
+				}
+				.hero__info-wrapper-right {
+					max-width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 14px;
+				}
+				.hero__info-wrapper-right-title {
+					font-size: 38px;
+				}
+			}
+
+			@media (max-width: 676px) {
+				.hero__info-img {
+					height: 690px;
+					padding: 20px;
+				}
+			}
+
+			@media (max-width: 590px) {
+				.hero__info-img {
+					height: 590px;
+					padding: 16px;
+				}
+			}
+			@media (max-width: 490px) {
+				.hero__info-img {
+					height: 490px;
+					padding: 14px;
+				}
+			}
+			@media (max-width: 390px) {
+				.site-header__wrapper {
+					max-width: 360px;
+				}
+
+				.hero {
+					padding-bottom: 70px;
+				}
+				.hero__info-img {
+					height: 390px;
+					padding: 10px;
+				}
+				.hero__info-list {
+					margin-bottom: 0;
+				}
+				.max1 {
+					max-width: 266px;
+				}
+				.max2 {
+					max-width: 287px;
+				}
+				.max3 {
+					max-width: 225px;
+				}
+				.hero__info-wrapper-btn {
+					padding: 31px;
+					margin-bottom: 10px;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<header class="site-header">
@@ -76,7 +604,7 @@
 			</form>
 		</div>
 
-		<script>
+		<script defer>
 			document.addEventListener('DOMContentLoaded', function () {
 				const modal = document.querySelector('.modal-backdrop');
 				const modalContent = modal.querySelector('.modal-content');
