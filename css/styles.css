@@ -1,12 +1,16 @@
+.form-heading,
+.hero__info-title,
+.obuna__btn {
+	text-transform: uppercase;
+}
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
-
 body {
-	background-color: white;
-	font-family: 'Montserrat', Arial, sans-serif;
+	background-color: #fff;
+	font-family: Montserrat, Arial, sans-serif;
 	color: #000;
 	overflow-x: hidden;
 	background-image: url(..//images/dasturlash-img.jpg);
@@ -14,7 +18,6 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-
 .container {
 	max-width: 1180px;
 	width: 100%;
@@ -23,9 +26,9 @@ body {
 	padding-right: 20px;
 	padding-left: 20px;
 }
-ul,
+a,
 ol,
-a {
+ul {
 	list-style: none;
 	text-decoration: none;
 }
@@ -33,7 +36,7 @@ a {
 	max-width: 289px;
 	width: 100%;
 	padding: 15px 36px;
-	background-image: linear-gradient(180deg, #ffffff 0%, #ccc9cf 49.53%, #ffffff 100%);
+	background-image: linear-gradient(180deg, #fff 0, #ccc9cf 49.53%, #fff 100%);
 	border-bottom-left-radius: 40px;
 	border-bottom-right-radius: 40px;
 	text-align: end;
@@ -51,15 +54,15 @@ a {
 .site-header__wrapper-title2 {
 	font-weight: 500;
 	font-size: 24px;
-	letter-spacing: 0%;
+	letter-spacing: 0;
 }
-
 .hero {
 	padding-top: 24px;
 	padding-bottom: 24px;
 	color: #fff;
 }
-.hero__container {
+.hero__container,
+.obuna__container {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -71,7 +74,6 @@ a {
 .hero__info-title {
 	font-weight: 400;
 	font-size: 52px;
-	text-transform: uppercase;
 	margin-bottom: 40px;
 }
 .hero__info-title span {
@@ -79,6 +81,10 @@ a {
 }
 .hero__info-list {
 	margin-bottom: 64px;
+}
+.form-heading,
+.form-label {
+	margin-bottom: 1.5rem;
 }
 .hero__info-list-item {
 	display: flex;
@@ -95,7 +101,7 @@ a {
 .hero__info-list-item-text {
 	font-weight: 500;
 	font-size: 24px;
-	letter-spacing: 0%;
+	letter-spacing: 0;
 }
 .max1 {
 	max-width: 397px;
@@ -121,9 +127,9 @@ a {
 	font-weight: 600;
 	font-size: 32px;
 	text-align: center;
-	padding: 39px 6px;
+	padding: 39px 20px;
 	color: #443412;
-	background: radial-gradient(50% 46.6% at 50% 50%, #f5cb72 0%, #c8a14e 100%);
+	background: radial-gradient(50% 46.6% at 50% 50%, #f5cb72 0, #c8a14e 100%);
 	border: none;
 	border-radius: 24px;
 }
@@ -141,9 +147,11 @@ a {
 	font-size: 44px;
 	color: #f5cb72;
 }
-
-/* MODALNI STILIGA TEGISHLI CSS */
-
+.form-button,
+.obuna__btn {
+	font-weight: 500;
+	cursor: pointer;
+}
 .modal-backdrop {
 	position: fixed;
 	inset: 0;
@@ -153,11 +161,13 @@ a {
 	background-color: rgba(0, 0, 0, 0.5);
 	padding: 20px;
 }
-
 .modal-backdrop--open {
 	display: grid;
 }
-
+.form-alert.open,
+.form-label {
+	display: block;
+}
 .modal-content {
 	position: relative;
 	width: 100%;
@@ -167,24 +177,14 @@ a {
 	padding: 2rem;
 	box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 }
-
 .form-heading {
 	font-size: 2rem;
-	margin-bottom: 1.5rem;
-	text-transform: uppercase;
 }
-
-.form-label {
-	display: block;
-	margin-bottom: 1.5rem;
-}
-
 .form-label span {
 	display: block;
 	font-size: 1rem;
 	margin-bottom: 0.5rem;
 }
-
 .form-label input {
 	width: 100%;
 	height: 3.5rem;
@@ -194,23 +194,18 @@ a {
 	border-radius: 0.75rem;
 	background-color: #f3f7f8;
 }
-
 .form-button {
 	width: 100%;
 	height: 4rem;
 	border-radius: 0.75rem;
 	background: #f5cb72;
 	font-size: 1.5rem;
-	font-weight: 500;
 	border: none;
-	cursor: pointer;
-	transition: background 0.3s ease;
+	transition: background 0.3s;
 }
-
 .form-button:hover {
 	background: #e5b64e;
 }
-
 .form-close {
 	position: absolute;
 	top: 1rem;
@@ -218,39 +213,21 @@ a {
 	width: 2rem;
 	cursor: pointer;
 }
-
-.form-alert {
-	display: none;
-	background-color: #f8d7da;
-	color: #721c24;
-	padding: 1rem;
-	border-radius: 8px;
-	margin-bottom: 1rem;
-	text-align: center;
-}
-
-.form-alert.open {
-	display: block;
-}
 .form-alert {
 	display: none;
 	margin-bottom: 1rem;
 	padding: 1.5rem 0;
-	color: #721c24; /* qizil */
-	background-color: #f8d7da; /* pushti */
+	color: #721c24;
+	background-color: #f8d7da;
 	border: 1px solid #f5c6cb;
 	border-radius: 16px;
 	text-align: center;
-	font-family: 'Inter', sans-serif;
-}
-
-.form-alert.open {
-	display: block;
+	font-family: Inter, sans-serif;
 }
 @keyframes shakeX {
 	from,
 	to {
-		transform: translateX(0px);
+		transform: translateX(0);
 	}
 	10%,
 	30%,
@@ -266,14 +243,8 @@ a {
 		transform: translateX(-10px);
 	}
 }
-
 .obuna {
 	padding-top: 140px;
-}
-.obuna__container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 }
 .obuna__info {
 	max-width: 714px;
@@ -291,16 +262,15 @@ a {
 	text-align: center;
 	max-width: 500px;
 	width: 100%;
-	margin: 0 auto;
-	margin-bottom: 42px;
+	margin: 0 auto 42px;
 }
 .obuna__arrow {
 	width: 218px;
 	height: 102px;
-	margin: 21px 248px 21px;
+	margin: 21px 248px;
 }
 .obuna__btn {
-	animation: shakeX 2s ease-in-out infinite;
+	animation: 2s ease-in-out infinite shakeX;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -309,13 +279,10 @@ a {
 	font-size: 42px;
 	padding: 20px 100px;
 	margin: 0 auto;
-	color: #ffffff;
-	font-weight: 500;
-	transition: all 0.1s ease;
-	cursor: pointer;
+	color: #fff;
+	transition: 0.1s;
 	text-decoration: none;
 	border: none;
-	text-transform: uppercase;
 }
 .obuna__btn-img {
 	width: 42px;
@@ -328,36 +295,27 @@ a {
 		align-items: center;
 		text-align: center;
 	}
-
 	.obuna__title {
 		font-size: 38px;
 	}
-
 	.obuna__text {
 		font-size: 24px;
 		padding-top: 16px;
 		margin-bottom: 30px;
 	}
-
 	.obuna__arrow {
 		width: 160px;
 		height: auto;
 		margin: 20px auto;
 	}
-
 	.obuna__btn {
 		font-size: 30px;
 		padding: 16px 60px;
 	}
-	body {
-		background-color: #000;
-		background-image: none;
-	}
 	.flex {
 		display: flex;
-		flex-direction: column; /* Har doim ustun ko‘rinish */
+		flex-direction: column;
 	}
-
 	.images {
 		width: 100%;
 		background-image: url(../images/dasturlash-media-img.png);
@@ -376,7 +334,7 @@ a {
 		justify-content: center;
 		flex-direction: column;
 		text-align: center;
-    margin: 0 auto;
+		margin: 0 auto;
 	}
 	.site-header__wrapper-title {
 		font-size: 32px;
@@ -387,6 +345,10 @@ a {
 	}
 }
 @media screen and (max-width: 768px) {
+	body {
+		background-image: none;
+		background-color: #000;
+	}
 	.hero {
 		padding-top: 40px;
 		padding-bottom: 200px;
@@ -412,7 +374,6 @@ a {
 		padding: 32px;
 		margin-bottom: 10px;
 	}
-
 	.hero__info-title {
 		font-size: 28px;
 		text-align: center;
@@ -457,7 +418,7 @@ a {
 	}
 	.hero__info-wrapper-btn {
 		font-size: 28px;
-		padding: 31px 6px;
+		padding: 31px 16px;
 		border-radius: 21px;
 		width: 100%;
 		margin-bottom: 15px;
@@ -473,14 +434,12 @@ a {
 		font-size: 38px;
 	}
 }
-
 @media (max-width: 676px) {
 	.hero__info-img {
 		height: 690px;
 		padding: 20px;
 	}
 }
-
 @media (max-width: 590px) {
 	.hero__info-img {
 		height: 590px;
@@ -497,7 +456,6 @@ a {
 	.site-header__wrapper {
 		max-width: 360px;
 	}
-
 	.hero {
 		padding-bottom: 70px;
 	}
@@ -518,7 +476,7 @@ a {
 		max-width: 225px;
 	}
 	.hero__info-wrapper-btn {
-		padding: 31px;
+		padding: 31px 10px;
 		margin-bottom: 10px;
 	}
 }
